@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/connexion.html');
 });
-app.get('/chat', function(req, res) {
+app.post('/chat', function(req, res) {
+    var username = req.body.pseudo;
+    console.log(username);
     res.sendFile(__dirname + '/index.html');
 });
 
@@ -27,18 +29,7 @@ http.listen(port, function(){
   console.log('listening on *:' + port);
 });
 /*
-var app = require('express')();
-var http = require('http').Server(app);
-var socket = require('socket.io')(http);
-var port = process.env.PORT || 3000;
-var ent = require('ent');
-var bodyParser = require('body-parser');
 
-var jsonParser = bodyParser.json()
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/connexion.html');
