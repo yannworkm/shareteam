@@ -20,7 +20,7 @@
       $('form').submit(function(e) {
         e.preventDefault(); // prevents page reloading
         socket.emit('connexion', $('#m').val());
-        
+
         $('#m').val('');
         return false;
       });
@@ -28,48 +28,45 @@
   </script>
 
   <body>
+    <br/>
 
-    <center><h1>Entrer votre pseudo</h1></center>
+    <center><div class="card" style="width: 40rem ;">
+      <img src="./image.jpeg" class="card-img-top" alt="photo">
+        <div class="card-body">
+          <center><h1>Entrer votre pseudo</h1></center>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <!-- Optional JavaScript -->
+          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+          <form class="container">
+            <div class="form-group">
+              <label for="exampleInputPrenom">Prénom</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Prenom" placeholder="Enter Prenom">
 
-    <form class="container">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Prénom</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailPrenom" placeholder="Enter Prenom">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputNom">Nom</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Nom" placeholder="Enter Nom">
 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Nom</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailNom" placeholder="Enter Nom">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPseudo">Pseudo</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Pseudo" placeholder="Enter Pseudo">
 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Pseudo</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailPseudo" placeholder="Enter Pseudo">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputCodePostal">Code Postal</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="CodePostal" placeholder="Enter Code Postal">
 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Code Postal</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailCodePostal" placeholder="Enter Code Postal">
+            </div>
 
-      </div>
-
-      <button type="submit" class="btn btn-primary">Entrer sur le chat </button>
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
+            <button type="submit" class="btn btn-primary">Entrer sur le chat </button>
+          </form>
+        </div>
+       </div></center>
 
 
   </body>
