@@ -1,0 +1,15 @@
+.chatIHM{
+    margin-top: 150px; 
+    margin-bottom: 150px; 
+    margin-left:200px; 
+    margin-right: 200px; 
+    border-radius: 8px;
+    border-radius: 20px;
+}
+.mainTitle{
+    border: solid 2px;
+    border-radius: 10px;
+}
+body{
+    background-image: radial-gradient(circle at center, white, #6da3f9);
+}

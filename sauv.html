@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Share Team - an application for trade love and files</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.couleurFond').select2({ width: '200px' });
+        $('.couleurPolice').select2({ width: '200px' });
+        $( "#foo" ).toggle( display );
+    });
+    $(function() {
+      var socket = io();
+      $('form').submit(function(e) {
+        e.preventDefault();
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg) {
+        $('#messages').append($('<li>').text(msg));
+      });
+    });
+    $(document).keypress(function(e) {
+      if(e.which == 13) {
+          alert('You pressed enter!');
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+          socket.on('chat message', function(msg) {
+          $('#messages').append($('<li>').text(msg));
+      });
+      }
+  });
+  </script>
+</head>
+<body class="text-center chatIHM">
+    <div class="card">
+        <div class="card-header" class="mainTitle"><h2> <i class="far fa-comments"></i> Interface de chat <i class="far fa-comments"></i></h2>
+          <hr>
+          <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fas fa-toolbox"></i></button>
+          <hr>
+          <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card" id="toolbox" style="margin-left:200px; margin-right: 200px;">
+                        <div class="card-body">
+                            <h6><i class="fas fa-toolbox"></i> Toolbox <i class="fas fa-toolbox"></i></h6>
+                            <hr>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button></div>
+                          </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+        <div class="card-body">
+            <div class="card text-center">
+                <div class="card-body">
+                    <ul id="messages"></ul>
+                </div>
+              </div>
+          <hr>
+          <form action="">
+            <div class="input-group mb-3 style="width: 50%;">
+              <input id="m" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" >
+            </div>
+            <button type="submit" class="btn btn-outline-primary" style="margin-bottom: 20px;">Envoyer <i class="far fa-share-square"></i></button>
+          </form>
+        </div>
+      </div>
+</body>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center couleurPerso">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-palette"></i> Personnalisation de l'interface <i class="fas fa-palette"></i></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inputAddress">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" placeholder="Changer le pseudo..">
+                    </div>
+                  <div class="form-group col-md-6">
+                    <label>Couleur police</label>
+                    <select class="couleurPolice" name="couleurPolice[]">
+                        <option value="AL">Jaune</option>
+                        <option value="WY">Vert</option>
+                        <option value="WY">Rouge</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Couleur fond</label>
+                    <select class="couleurFond" id="couleurFond" name="couleurFond[]">
+                        <option value="AL">Jaune</option>
+                        <option value="WY">Vert</option>
+                        <option value="WY">Rouge</option>
+                      </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
