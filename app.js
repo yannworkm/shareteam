@@ -2,6 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
+var clients = [];
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/connexion.html');
@@ -11,9 +12,10 @@ app.get('/chat', function(req, res) {
 });
 
 io.on('connection', function(socket){
-  socket.on('connection')  function(name,city,age){
+  socket.on('connection'), function(name,city,age){
 
-  }
+    };
+
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
