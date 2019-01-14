@@ -4,10 +4,16 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/connexion.html');
 });
-//test
+app.get('/chat', function(req, res) {
+  res.sendFile(__dirname + '/chat.html');
+});
+
 io.on('connection', function(socket){
+  socket.on('connection')  function(name,city,age){
+
+  }
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
