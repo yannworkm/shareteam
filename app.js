@@ -3,21 +3,22 @@ var http = require('http').Server(app);
 var socket = require('socket.socket')(http);
 var port = process.env.PORT || 3000;
 var ent = require('ent');
+var bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.get('/', functsocketn(req, res) {
-  res.sendFile(__dirname + '/connexsocketn.html');
+  res.sendFile(__dirname + '/connexion.html');
 });
-app.get('/chat', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+app.post('/chat',urlencodedParser,  urlencodedParser, function (req, res){
+    console.log('lol')
+    res.sendFile(__dirname + '/index.html');
 });
 
 socket.on('connection', function(socket, pseudo){
-  socket.on('connect', function(pseudo) {
-        pseudo = ent.encode(pseudo);
-        socket.pseudo = pseudo;
-        socket.broadcast.emit('connect', pseudo);
-    });
-
 
   socket.on('chat message', function(message){
     message = ent.encode(message);
