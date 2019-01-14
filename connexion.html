@@ -1,76 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Connexion</title>
-  </head>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-  <script>
-    $(function() {
-      var socket = io();
-      $('form').submit(function(e) {
-        e.preventDefault(); // prevents page reloading
-        socket.emit('connexion', $('#m').val());
-        
-        $('#m').val('');
-        return false;
-      });
-    });
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Connexion</title>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+  $(function() {
+  var socket = io();
+  $('form').submit(function(e) {
+    e.preventDefault(); // prevents page reloading
+    socket.on('connect', function () {
+      socket.emit('ferret', 'tobi', 'woot', function (data) { // args are sent in order to acknowledgement function
+     console.log(data);
+   });
+   });
+  });
+});
   </script>
 
-  <body>
+<body>
 
-    <center><h1>Entrer votre pseudo</h1></center>
+  <center>
+    <h1>Entrer votre pseudo</h1>
+  </center>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <form class="container">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Prénom</label>
+      <input type="text" class="form-control" id="firstname" aria-describedby="emailPrenom" placeholder="Enter Prenom">
 
-    <form class="container">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Prénom</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailPrenom" placeholder="Enter Prenom">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nom</label>
+      <input type="text" class="form-control" id="lastname" aria-describedby="emailNom" placeholder="Enter Nom">
 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Nom</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailNom" placeholder="Enter Nom">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Pseudo</label>
+      <input type="text" class="form-control" id="pseudo" aria-describedby="emailPseudo" placeholder="Enter Pseudo">
 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Pseudo</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailPseudo" placeholder="Enter Pseudo">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Code Postal</label>
+      <input type="text" class="form-control" id="postal" aria-describedby="emailCodePostal" placeholder="Enter Code Postal">
 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Code Postal</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailCodePostal" placeholder="Enter Code Postal">
+    </div>
 
-      </div>
+    <button type="submit" class="btn btn-primary">Entrer sur le chat </button>
+  </form>
+</body>
 
-      <button type="submit" class="btn btn-primary">Entrer sur le chat </button>
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </body>
 </html>

@@ -1,23 +1,27 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var socket = require('socket.socket')(http);
 var port = process.env.PORT || 3000;
-var clients = [];
+var ent = require('ent');
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/connexion.html');
+app.get('/', functsocketn(req, res) {
+  res.sendFile(__dirname + '/connexsocketn.html');
 });
 app.get('/chat', function(req, res) {
-  res.sendFile(__dirname + '/chat.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket){
-  socket.on('connection'), function(name,city,age){
+socket.on('connection', function(socket, pseudo){
+  socket.on('connect', function(pseudo) {
+        pseudo = ent.encode(pseudo);
+        socket.pseudo = pseudo;
+        socket.broadcast.emit('connect', pseudo);
+    });
 
-    };
 
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat message', function(message){
+    message = ent.encode(message);
+    socket.broadcast.emit('chat message', {pseudo: socket.pseudo, message: message});
   });
 });
 
