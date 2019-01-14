@@ -1,0 +1,9 @@
+{
+  "name": "share-team",
+  "version": "0.0.1",
+  "description": "a chat for share love and files",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
