@@ -44,6 +44,9 @@ Définition de la table: Message / pseudo / date / heure (timestmap)
 Condition: les messages des 30 derniers jour sont sauvegardés.
 
 
+
+
+
 #Documentation Back
 
 <ul><p>app.js, fichier du serveur de l'application:</p>
