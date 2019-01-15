@@ -28,12 +28,12 @@ Interface page de connexion => formulaire de connexion
     <li>- Toolbox toggle => modal personnalisation (changement de couleur du théme)
     <li>- Champ input envoie de message / envoie de fichier </uk>
 
-Fonction JS:
-    - showbrowseFile() => permet de visualiser le champ d'ajout de fichier
-    - changeColorConv() => permet de changer la couleur du théme
-    - Handler:
-        - keypress sur bouton entrée: valide form message
-        - Submit du formulaire
+<ul><p>Fonction JS:</p>
+    <li>- showbrowseFile() => permet de visualiser le champ d'ajout de fichier</li>
+    <li>- changeColorConv() => permet de changer la couleur du théme</li>
+    <li><ul><p>- Handler:</p>
+        <li>- keypress sur bouton entrée: valide form message</li>
+        <li>- Submit du formulaire</li></ul>
 
 # Base de données
 
@@ -42,13 +42,12 @@ Technologie: MySQL
 Définition de la table: Message / pseudo / date / heure (timestmap)
 
 Condition: les messages des 30 derniers jour sont sauvegardés.
-Utilisation de CDN bootstrap 4 / Jquery
 
 
 #Documentation Back
 
-app.js, fichier du serveur de l'application:
-    - Utilisation du framework Express par le serveur 
-    - Utilisation du protocole HTTP pour communiquer avec le client (var http)
-    - Les communications se font sur le port 3000 (var port)
-    - Utilisation de la méthode post pour le chat
+<ul><p>app.js, fichier du serveur de l'application:</p>
+    <li>- Utilisation du framework Express par le serveur </li>
+    <li>- Utilisation du protocole HTTP pour communiquer avec le client (var http)</li>
+    <li>- Les communications se font sur le port 3000 (var port)</li>
+    <li>- Utilisation de la méthode post pour le chat </li></ul>
