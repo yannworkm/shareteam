@@ -34,4 +34,4 @@ app.js, fichier du serveur de l'application:
     - Utilisation du protocole HTTP pour communiquer avec le client (var http)
     - Les communications se font sur le port 3000 (var port)
     - Utilisation de la méthode post pour le chat
-    - 
+ 
