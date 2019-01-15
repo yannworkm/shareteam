@@ -14,8 +14,14 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/connexion.html');
 });
+<<<<<<< HEAD
 
 app.get('/chat', function(req, res) {
+=======
+app.post('/chat', function(req, res) {
+    var username = req.body.pseudo;
+    console.log(username);
+>>>>>>> 91458415e3a5259e553959ecb08f2191863f3916
     res.sendFile(__dirname + '/index.html');
 });
 
@@ -28,3 +34,30 @@ io.on('connection', function(socket){
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
+<<<<<<< HEAD
+=======
+/*
+
+
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/connexion.html');
+});
+app.post('/chat', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
+
+socket.on('connection', function(socket, pseudo){
+  socket.on('connect', function(pseudo) {
+        pseudo = ent.encode(pseudo);
+        socket.pseudo = pseudo;
+        socket.broadcast.emit('connect', pseudo);
+    });
+
+
+  socket.on('chat message', function(message){
+      message = ent.encode(message);
+      socket.emit('chat message', msg);
+  });
+});
+*/
+>>>>>>> 91458415e3a5259e553959ecb08f2191863f3916

@@ -1,20 +1,58 @@
 <!doctype html>
 <html>
-
 <head>
   <title>Share Team - an application for trade love and files</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font: 13px Helvetica, Arial;
+    }
+
+    form {
+      background: #000;
+      padding: 3px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    form input {
+      border: 0;
+      padding: 10px;
+      width: 90%;
+      margin-right: .5%;
+    }
+
+    form button {
+      width: 9%;
+      background: rgb(130, 224, 255);
+      border: none;
+      padding: 10px;
+    }
+
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #messages li {
+      padding: 5px 10px;
+    }
+
+    #messages li:nth-child(odd) {
+      background: #eee;
+    }
+  </style>
   <script src="/socket.io/socket.io.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
+<<<<<<< HEAD
   var formData = document.sessionStorage["form-data"];
   console.log(formData);
     $(document).ready(function() {
@@ -22,52 +60,24 @@
         $('.couleurPolice').select2({ width: '200px' });
     });
 
+=======
+>>>>>>> 91458415e3a5259e553959ecb08f2191863f3916
     $(function() {
       var socket = io();
       $('form').submit(function(e) {
-        e.preventDefault();
+        e.preventDefault(); // prevents page reloading
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
-        console.log("ttettt");
         return false;
       });
       socket.on('chat message', function(msg) {
         $('#messages').append($('<li>').text(msg));
       });
     });
-    $(document).keypress(function(e) {
-      if(e.which == 13) {
-          alert('You pressed enter!');
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-          socket.on('chat message', function(msg) {
-          $('#messages').append($('<li>').text(msg));
-      });
-      }
-  });
-  function showbrowseFile(){
-      //alert();
-      if($("#browseFile").attr("hidden")){
-        $("#browseFile").attr("hidden", false);
-      } else {
-        $("#browseFile").attr("hidden", true);
-      }
-    }
-
-  //
-  function changeColorConv(){
-      $("messageBox").css("background-color: blue");
-  }
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-  $(function() {
-    $('#toggle-one').bootstrapToggle();
-  })
   </script>
 </head>
 
+<<<<<<< HEAD
 <body class="text-center chatIHM">
   <div class="card">
     <div class="card-header Theme">
@@ -163,20 +173,15 @@
 <script>
 
   $("#couleurFond").change(function() {
+=======
+<body>
+>>>>>>> 91458415e3a5259e553959ecb08f2191863f3916
 
-    var color = $("#couleurFond").val();
+  <ul id="messages"></ul>
 
-    if (color == "yellow") {
-      $(".Theme").attr('style', 'background-color: yellow');
-    } else if (color == "red") {
-      $(".Theme").attr('style', 'background-color: #FC6861');
-    } else if (color == "blue") {
-      $(".Theme").attr('style', 'background-color: #78C4E3');
-    } else if (color == "green") {
-      $(".Theme").attr('style', 'background-color: #5FBB63');
-    }
-  })
-  $("#browseFile").attr("hidden", true);
-</script>
+  <form action="">
+    <input id="m" autocomplete="off" /><button>Send</button>
+  </form>
+</body>
 
 </html>

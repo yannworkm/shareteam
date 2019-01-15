@@ -4,9 +4,10 @@
 <head>
   <title>Share Team - an application for trade love and files</title>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -20,7 +21,7 @@
         $('.couleurFond').select2({ width: '200px' });
         $('.couleurPolice').select2({ width: '200px' });
     });
-
+    
     $(function() {
       var socket = io();
       $('form').submit(function(e) {
@@ -66,115 +67,112 @@
   })
   </script>
 </head>
-
 <body class="text-center chatIHM">
-  <div class="card">
-    <div class="card-header Theme">
-      <h2 class="mainTitle" data-toggle="tooltip" data-placement="right" title="Cette interface vous permet de communiquer avec autres utilisateurs ayant acces à ce serveur. Le bouton Show ToolBox permet de visualiser les differents outils permettant de personnaliser la fenetre. Vous pouvez ecrire des message et joindre des fichiers à votre conversation.">
-        <i class="far fa-comments"></i> Interface de chat <i class="fas fa-cat"></i></h2>
-      <hr>
-      <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fas fa-toolbox"></i> Show/Hide ToolBox <i class="fas fa-tools"></i></button>
-      <hr>
-      <div class="row">
-        <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample2">
-            <div class="card" id="toolbox" style="border-radius: 150px;">
-              <div class="card-body">
-                <h6><i class="fas fa-toolbox"></i> Toolbox <i class="fas fa-toolbox"></i></h6>
-                <hr>
-                <button type="button" data-toggle="tooltip" data-placement="top" title="Personnalisation de l'interface" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
-                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-pen"></i></button>
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="far fa-window-maximize"></i></button>
-                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-cat"></i></button>
+    <div class="card">
+        <div class="card-header Theme"><h2 class="mainTitle" data-toggle="tooltip" data-placement="right" title="Cette interface vous permet de communiquer avec autres utilisateurs ayant acces à ce serveur. Le bouton Show ToolBox permet de visualiser les differents outils permettant de personnaliser la fenetre. Vous pouvez ecrire des message et joindre des fichiers à votre conversation."> <i class="far fa-comments"></i>    Interface de chat    <i class="fas fa-cat"></i></h2>
+          <hr>
+          <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fas fa-toolbox"></i> Show/Hide ToolBox <i class="fas fa-tools"></i></button>
+          <hr>
+          <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card" id="toolbox" style="border-radius: 150px;">
+                        <div class="card-body">
+                            <h6><i class="fas fa-toolbox"></i> Toolbox <i class="fas fa-toolbox"></i></h6>
+                            <hr>
+                            <button type="button" data-toggle="tooltip" data-placement="top" title="Personnalisation de l'interface" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-pen"></i></button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="far fa-window-maximize"></i></button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-cat"></i></button>
+                        </div>
+                        </div>
+                      </div>
+                </div>
               </div>
             </div>
+        <div class="card-body">
+            <div class="card text-center">
+                <div class="card-body messageBox">
+                    <ul id="messages"></ul>
+                </div>
+              </div>
+          <hr>
+          <form action="" class="text-center">
+            <div class="input-group mb-3 inputSend">
+                <div class="input-group-prepend" onclick="showbrowseFile();">
+                    <div class="input-group-text"><i class="fas fa-link"></i></div>
+                </div>
+              <input id="m" type="text" class="form-control">
+              <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary"><i class="far fa-share-square"></i></button>
+                </div>
+            </div>
+          </form>
+          <div class="custom-file inputSend" id="browseFile">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choisir un fichier</label>
           </div>
         </div>
+        <div class="card-footer Theme" data-toggle="tooltip" data-placement="bottom" title="Clara - Lisa - Ludovic - Livio - Pierre - Aurelien - Kevin - Yann"><i class="fab fa-teamspeak"></i> Shareteam - 2019 <i class="fab fa-teamspeak"></i></div>
       </div>
-    </div>
-    <div class="card-body">
-      <div class="card text-center">
-        <div class="card-body messageBox">
-          <ul id="messages"></ul>
-        </div>
-      </div>
-      <hr>
-      <form action="" class="text-center">
-        <div class="input-group mb-3 inputSend">
-          <div class="input-group-prepend" onclick="showbrowseFile();">
-            <div class="input-group-text"><i class="fas fa-link"></i></div>
-          </div>
-          <input id="m" type="text" class="form-control">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary"><i class="far fa-share-square"></i></button>
-          </div>
-        </div>
-      </form>
-      <div class="custom-file inputSend" id="browseFile">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Choisir un fichier</label>
-      </div>
-    </div>
-    <div class="card-footer Theme" data-toggle="tooltip" data-placement="bottom" title="Clara - Lisa - Ludovic - Livio - Pierre - Aurelien - Kevin - Yann"><i class="fab fa-teamspeak"></i> Shareteam - 2019 <i class="fab fa-teamspeak"></i></div>
-  </div>
 </body>
 
-<!-- MODAL DE PERSONNALISATION -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center couleurPerso">
-        <h5 class="modal-title"><i class="fas fa-palette"></i> Personnalisation de l'interface <i class="fas fa-palette"></i></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label>Pseudo</label>
-            <input type="text" class="form-control" id="pseudo" placeholder="Changer le pseudo..">
-          </div>
-          <div class="form-group">
-            <label>Couleur police</label>
-            <select class="couleurPolice" name="couleurPolice[]">
-              <option value="yellow">Jaune</option>
-              <option value="green">Vert</option>
-              <option value="red">Rouge</option>
-              <option value="blue">Blue</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Couleur Théme</label>
-            <select class="couleurFond" id="couleurFond" name="couleurFond[]">
-              <option value="yellow">Jaune</option>
-              <option value="green">Vert</option>
-              <option value="red">Rouge</option>
-              <option value="blue">Blue</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
-        </form>
+  <!-- MODAL DE PERSONNALISATION -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center couleurPerso">
+          <h5 class="modal-title"><i class="fas fa-palette"></i> Personnalisation de l'interface <i class="fas fa-palette"></i></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label>Pseudo</label>
+                    <input type="text" class="form-control" id="pseudo" placeholder="Changer le pseudo..">
+                </div>
+                <div class="form-group"> 
+                        <label>Couleur police</label>
+                        <select class="couleurPolice" name="couleurPolice[]">
+                                <option value="yellow">Jaune</option>
+                                <option value="green">Vert</option>
+                                <option value="red">Rouge</option>
+                                <option value="blue">Blue</option>
+                            </select>                    
+                </div>
+                <div class="form-group"> 
+                        <label>Couleur Théme</label>
+                        <select class="couleurFond" id="couleurFond" name="couleurFond[]">
+                                <option value="yellow">Jaune</option>
+                                <option value="green">Vert</option>
+                                <option value="red">Rouge</option>
+                                <option value="blue">Blue</option>
+                        </select>                  
+                </div>
+                <button type="submit" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
+              </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<script>
-  $("#couleurFond").change(function() {
+  <script>
+    $("#couleurFond").change(function(){
 
-    var color = $("#couleurFond").val();
+        var color = $("#couleurFond").val();
 
-    if (color == "yellow") {
-      $(".Theme").attr('style', 'background-color: yellow');
-    } else if (color == "red") {
-      $(".Theme").attr('style', 'background-color: #FC6861');
-    } else if (color == "blue") {
-      $(".Theme").attr('style', 'background-color: #78C4E3');
-    } else if (color == "green") {
-      $(".Theme").attr('style', 'background-color: #5FBB63');
-    }
-  })
-  $("#browseFile").attr("hidden", true);
-</script>
+        if(color == "yellow"){
+            $(".Theme").attr('style','background-color: yellow');
+        } else if (color == "red") {
+            $(".Theme").attr('style','background-color: #FC6861');
+        } else if (color == "blue") {
+            $(".Theme").attr('style','background-color: #78C4E3');
+        } else if (color == "green") {
+            $(".Theme").attr('style','background-color: #5FBB63');
+        }
+    })
+    $("#browseFile").attr("hidden", true);
 
-</html>
+  </script>
+</html> 
