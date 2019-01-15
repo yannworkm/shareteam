@@ -24,6 +24,8 @@
 
     $(function() {
       var socket = io();
+
+      // submit du formulaire
       $('form').submit(function(e) {
         e.preventDefault();
         socket.emit('chat message', $('#m').val());
@@ -35,6 +37,8 @@
         $('#messages').append($('<li>').text(msg));
       });
     });
+
+    // Handler sur la touche entrée pour valider le formulaire
     $(document).keypress(function(e) {
       if(e.which == 13) {
           socket.emit('chat message', $('#m').val());
@@ -45,6 +49,8 @@
       });
       }
   });
+
+  // permet de visualiser l'input d'ajout de fichier
   function showbrowseFile(){
       if($("#browseFile").attr("hidden")){
         $("#browseFile").attr("hidden", false);
@@ -52,7 +58,8 @@
         $("#browseFile").attr("hidden", true);
       }
     }
-  //
+
+  // Changement de la couleur du fond
   function changeColorConv(){
       $("messageBox").css("background-color: blue");
   }
@@ -152,10 +159,9 @@
     </div>
   </div>
   <script>
+    // On change select color
     $("#couleurFond").change(function(){
-
         var color = $("#couleurFond").val();
-
         if(color == "yellow"){
             $(".Theme").attr('style','background-color: yellow');
         } else if (color == "red") {
@@ -167,6 +173,5 @@
         }
     })
     $("#browseFile").attr("hidden", true);
-
   </script>
 </html>
