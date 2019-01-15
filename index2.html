@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+  <title>Share Team - an application for trade love and files</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font: 13px Helvetica, Arial;
+    }
+
+    form {
+      background: #000;
+      padding: 3px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    form input {
+      border: 0;
+      padding: 10px;
+      width: 90%;
+      margin-right: .5%;
+    }
+
+    form button {
+      width: 9%;
+      background: rgb(130, 224, 255);
+      border: none;
+      padding: 10px;
+    }
+
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #messages li {
+      padding: 5px 10px;
+    }
+
+    #messages li:nth-child(odd) {
+      background: #eee;
+    }
+  </style>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
+<body class="text-center chatIHM">
+  <div class="card">
+    <div class="card-header Theme">
+      <h2 class="mainTitle" data-toggle="tooltip" data-placement="right" title="Cette interface vous permet de communiquer avec autres utilisateurs ayant acces à ce serveur. Le bouton Show ToolBox permet de visualiser les differents outils permettant de personnaliser la fenetre. Vous pouvez ecrire des message et joindre des fichiers à votre conversation.">
+        <i class="far fa-comments"></i> Interface de chat <i class="fas fa-cat"></i></h2>
+      <hr>
+      <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fas fa-toolbox"></i> Show/Hide ToolBox <i class="fas fa-tools"></i></button>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card" id="toolbox" style="border-radius: 150px;">
+              <div class="card-body">
+                <h6><i class="fas fa-toolbox"></i> Toolbox <i class="fas fa-toolbox"></i></h6>
+                <hr>
+                <button type="button" data-toggle="tooltip" data-placement="top" title="Personnalisation de l'interface" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
+                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-pen"></i></button>
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="far fa-window-maximize"></i></button>
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-cat"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card text-center">
+        <div class="card-body messageBox">
+          <ul id="messages"></ul>
+        </div>
+      </div>
+      <hr>
+      <form action="" class="text-center">
+        <div class="input-group mb-3 inputSend">
+          <div class="input-group-prepend" onclick="showbrowseFile();">
+            <div class="input-group-text"><i class="fas fa-link"></i></div>
+          </div>
+          <input id="m" type="text" class="form-control">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary"><i class="far fa-share-square"></i></button>
+          </div>
+        </div>
+      </form>
+      <div class="custom-file inputSend" id="browseFile">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+      </div>
+    </div>
+    <div class="card-footer Theme" data-toggle="tooltip" data-placement="bottom" title="Clara - Lisa - Ludovic - Livio - Pierre - Aurelien - Kevin - Yann"><i class="fab fa-teamspeak"></i> Shareteam - 2019 <i class="fab fa-teamspeak"></i></div>
+  </div>
+</body>
+
+<!-- MODAL DE PERSONNALISATION -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center couleurPerso">
+        <h5 class="modal-title"><i class="fas fa-palette"></i> Personnalisation de l'interface <i class="fas fa-palette"></i></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Pseudo</label>
+            <input type="text" class="form-control" id="pseudo" placeholder="Changer le pseudo..">
+          </div>
+          <div class="form-group">
+            <label>Couleur police</label>
+            <select class="couleurPolice" name="couleurPolice[]">
+              <option value="yellow">Jaune</option>
+              <option value="green">Vert</option>
+              <option value="red">Rouge</option>
+              <option value="blue">Blue</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Couleur Théme</label>
+            <select class="couleurFond" id="couleurFond" name="couleurFond[]">
+              <option value="yellow">Jaune</option>
+              <option value="green">Vert</option>
+              <option value="red">Rouge</option>
+              <option value="blue">Blue</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("#couleurFond").change(function() {
+</script>
+  <ul id="messages"></ul>
+
+  <form action="">
+    <input id="m" autocomplete="off" /><button>Send</button>
+  </form>
+</body>
+
+</html>
