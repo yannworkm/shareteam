@@ -1,15 +1,42 @@
+body{
+    background-image: url('../img/fond.jpg');
+}
 .chatIHM{
-    margin-top: 150px; 
+    margin-top: 90px!important; 
     margin-bottom: 150px; 
-    margin-left:200px; 
-    margin-right: 200px; 
+    width: 50%;
+    margin: auto;
     border-radius: 8px;
     border-radius: 20px;
 }
 .mainTitle{
-    border: solid 2px;
+    border: 2px solid;
     border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-shadow: 0px 0px 0 white, 4px 4px 0 white;
 }
-body{
-    background-image: radial-gradient(circle at center, white, #6da3f9);
+
+.Theme{
+    background-color: #a9d2f0;    ;
+    letter-spacing: .7rem;
+}
+#toolbox{
+    margin-left:60px; margin-right: 60px;
+}
+
+.messageBox{
+    overflow: scroll;
+    height: 200px;
+}
+
+.inputSend{
+    width: 90%; 
+    margin: auto;
+}
+
+hr.style-three {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
 }
