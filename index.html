@@ -24,28 +24,29 @@
 
     $(function() {
       var socket = io();
+      var pseudo = sessionStorage.getItem('pseudo')
 
       // submit du formulaire
       $('form').submit(function(e) {
         e.preventDefault();
-        socket.emit('chat message', $('#m').val());
+        socket.emit('chat message', pseudo+" > "+$('#m').val());
         $('#m').val('');
         console.log("ttettt");
         return false;
       });
       socket.on('chat message', function(msg) {
-        $('#messages').append($('<li>').text(sessionStorage.getItem('pseudo') +" : "+ msg));
+        $('#messages').append($('<li>').text(msg));
       });
     });
 
     // Handler sur la touche entrée pour valider le formulaire
     $(document).keypress(function(e) {
       if(e.which == 13) {
-          socket.emit('chat message', $('#m').val());
+          socket.emit('chat message', pseudo+" > "+$('#m').val());
           $('#m').val('');
           return false;
           socket.on('chat message', function(msg) {
-          $('#messages').append($('<li>').text(sessionStorage.getItem('pseudo') +" : "+msg));
+          $('#messages').append($('<li>').text(msg));
       });
       }
   });
