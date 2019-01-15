@@ -1,6 +1,16 @@
 # shareteam
 
+ShareTeam is a simple application of chat and share files.
+
+#Require
+
+Nodejs
+
+After clone the project :
 npm install
+npm update
+
+launch
 
 # Documentation Front
 
@@ -14,4 +24,4 @@ Interface page de discussion:
     - Champ de visualisation de message
     - Toolbox topggle => modal personnalisation
     - Champ input envoie de message / envoie de fichier
-    - 
+    -
