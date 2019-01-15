@@ -10,16 +10,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/connexion.html');
 });
 
-app.post('/chat', function(req, res) {
-    var firstname = req.body.user.firstname;
-    var lastname = req.body.user.lastname;
-    var pseudo = req.body.user.pseudo;
-    var postalcode = req.body.user.postalcode;
-
+app.get('/chat', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
@@ -32,19 +28,3 @@ io.on('connection', function(socket){
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
-/*
-
-socket.on('connection', function(socket, pseudo){
-  socket.on('connect', function(pseudo) {
-        pseudo = ent.encode(pseudo);
-        socket.pseudo = pseudo;
-        socket.broadcast.emit('connect', pseudo);
-    });
-
-
-  socket.on('chat message', function(message){
-      message = ent.encode(message);
-      socket.emit('chat message', msg);
-  });
-});
-*/
