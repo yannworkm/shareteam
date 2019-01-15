@@ -24,6 +24,8 @@
 
     $(function() {
       var socket = io();
+
+      // submit du formulaire
       $('form').submit(function(e) {
         e.preventDefault();
         socket.emit('chat message', $('#m').val());
@@ -35,6 +37,8 @@
         $('#messages').append($('<li>').text(sessionStorage.getItem('pseudo') +" : "+ msg));
       });
     });
+
+    // Handler sur la touche entrée pour valider le formulaire
     $(document).keypress(function(e) {
       if(e.which == 13) {
           socket.emit('chat message', $('#m').val());
@@ -45,6 +49,8 @@
       });
       }
   });
+
+  // permet de visualiser l'input d'ajout de fichier
   function showbrowseFile(){
       if($("#browseFile").attr("hidden")){
         $("#browseFile").attr("hidden", false);
@@ -52,7 +58,8 @@
         $("#browseFile").attr("hidden", true);
       }
     }
-  //
+
+  // Changement de la couleur du fond
   function changeColorConv(){
       $("messageBox").css("background-color: blue");
   }
@@ -77,10 +84,7 @@
                         <div class="card-body">
                             <h6><i class="fas fa-toolbox"></i> Toolbox <i class="fas fa-toolbox"></i></h6>
                             <hr>
-                            <button type="button" data-toggle="tooltip" data-placement="top" title="Personnalisation de l'interface" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-pen"></i></button>
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="far fa-window-maximize"></i></button>
-                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-cat"></i></button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
                         </div>
                         </div>
                       </div>
@@ -155,10 +159,9 @@
     </div>
   </div>
   <script>
+    // On change select color
     $("#couleurFond").change(function(){
-
         var color = $("#couleurFond").val();
-
         if(color == "yellow"){
             $(".Theme").attr('style','background-color: yellow');
         } else if (color == "red") {
@@ -170,6 +173,5 @@
         }
     })
     $("#browseFile").attr("hidden", true);
-
   </script>
 </html>
