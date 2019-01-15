@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPseudo">Pseudo</label>
-              <input type="text" class="form-control" name="pseudo" aria-describedby="Pseudo" placeholder="Enter Pseudo">
+              <input type="text" class="form-control" id="pseudo" name="pseudo" aria-describedby="Pseudo" placeholder="Enter Pseudo">
             </div>
             <div class="form-group">
               <label for="exampleInputCodePostal">Code Postal</label>
@@ -43,9 +43,16 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Entrer sur le chat </button>
+            <button type="submit" onclick="entrerChat();" class="btn btn-primary">Entrer sur le chat </button>
           </form>
         </div>
        </div></center>
+       <script type="text/javascript">
+       //Reset
+      function entrerChat(){
+        var pseudo = $("#pseudo").val();
+        sessionStorage.setItem("pseudo",pseudo);
+      }
+       </script>
   </body>
 </html>
