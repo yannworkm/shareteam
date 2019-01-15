@@ -37,7 +37,6 @@
     });
     $(document).keypress(function(e) {
       if(e.which == 13) {
-          alert('You pressed enter!');
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
           return false;
@@ -47,14 +46,12 @@
       }
   });
   function showbrowseFile(){
-      //alert();
       if($("#browseFile").attr("hidden")){
         $("#browseFile").attr("hidden", false);
       } else {
         $("#browseFile").attr("hidden", true);
       }
     }
-
   //
   function changeColorConv(){
       $("messageBox").css("background-color: blue");
@@ -151,7 +148,7 @@
                                 <option value="blue">Blue</option>
                         </select>
                 </div>
-                <button type="submit" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
+                <button type="button" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
               </form>
         </div>
       </div>
