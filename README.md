@@ -22,7 +22,6 @@ Interface page de connexion:
     
 Interface page de discussion:
     - Tooltip de descriptionn (header et footer)
-    - Les différents modules utilisés dans le seveur sont stockés dans node_modules
     - Champ de visualisation de message => message box
     - Toolbox topggle => modal personnalisation
     - Champ input envoie de message / envoie de fichier
@@ -34,5 +33,5 @@ app.js, fichier du serveur de l'application:
     - Utilisation du framework Express par le serveur 
     - Utilisation du protocole HTTP pour communiquer avec le client (var http)
     - Les communications se font sur le port 3000 (var port)
-    - Utilisation de la méthode post pour commmuniquer dans le chat
-    - La fonction connection pour réceptionner et afficher les messages
+    - Utilisation de la méthode post pour le chat
+    - 
