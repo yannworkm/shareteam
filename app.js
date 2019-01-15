@@ -13,9 +13,13 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/connexion.html');
 });
+
 app.post('/chat', function(req, res) {
-    var username = req.body.pseudo;
-    console.log(username);
+    var firstname = req.body.user.firstname;
+    var lastname = req.body.user.lastname;
+    var pseudo = req.body.user.pseudo;
+    var postalcode = req.body.user.postalcode;
+
     res.sendFile(__dirname + '/index.html');
 });
 
@@ -29,14 +33,6 @@ http.listen(port, function(){
   console.log('listening on *:' + port);
 });
 /*
-
-
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/connexion.html');
-});
-app.post('/chat', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
 
 socket.on('connection', function(socket, pseudo){
   socket.on('connect', function(pseudo) {
