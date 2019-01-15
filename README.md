@@ -20,13 +20,13 @@ Technologie utilisé: Javascript / bootstrap4 / Jquery / HTML5 / CSS3
 
 Interface page de connexion => formulaire de connexion
 
-Interface page de discussion:
-    - Tooltip de description:
-        - Header = description de l'application de chat
-        - Footer = membres de la team
-    - Champ de visualisation de message
-    - Toolbox toggle => modal personnalisation (changement de couleur du théme)
-    - Champ input envoie de message / envoie de fichier
+<ul><p>Interface page de discussion:</p>
+    <li><ul><p>- Tooltip de description:</p>
+        <li>- Header = description de l'application de chat</li>
+        <li>- Footer = membres de la team</li></ul>
+    <li>- Champ de visualisation de message
+    <li>- Toolbox toggle => modal personnalisation (changement de couleur du théme)
+    <li>- Champ input envoie de message / envoie de fichier </uk>
 
 Fonction JS:
     - showbrowseFile() => permet de visualiser le champ d'ajout de fichier
