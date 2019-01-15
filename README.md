@@ -29,7 +29,7 @@ Interface page de discussion:
 
 #Documentation Back
 
-app.js, fichier du serveur de l'application:
+App.js, fichier du serveur de l'application:
     - Utilisation du framework Express par le serveur 
     - Utilisation du protocole HTTP pour communiquer avec le client (var http)
     - Les communications se font sur le port 3000 (var port)
