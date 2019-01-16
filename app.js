@@ -35,7 +35,7 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 });
-
+// Afffiche le port
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
