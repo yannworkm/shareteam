@@ -5,8 +5,9 @@
   <title>Share Team - an application for trade love and files</title>
   <script src="/socket.io/socket.io.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+  <script src="/js/crypt.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
@@ -31,7 +32,6 @@
         e.preventDefault();
         socket.emit('chat message', pseudo+" > "+$('#m').val());
         $('#m').val('');
-        console.log("ttettt");
         return false;
       });
       socket.on('chat message', function(msg) {
@@ -41,6 +41,7 @@
 
     // Handler sur la touche entrée pour valider le formulaire
     $(document).keypress(function(e) {
+      var socket = io();
       if(e.which == 13) {
           socket.emit('chat message', pseudo+" > "+$('#m').val());
           $('#m').val('');
@@ -73,6 +74,9 @@
   </script>
 </head>
 <body class="text-center chatIHM">
+    <audio controls>
+        <source src="./ah.mp3" type="audio/mpeg">
+    </audio>
     <div class="card">
         <div class="card-header Theme"><h2 class="mainTitle" data-toggle="tooltip" data-placement="right" title="Cette interface vous permet de communiquer avec autres utilisateurs ayant acces à ce serveur. Le bouton Show ToolBox permet de visualiser les differents outils permettant de personnaliser la fenetre. Vous pouvez ecrire des message et joindre des fichiers à votre conversation."> <i class="far fa-comments"></i>    Interface de chat    <i class="fas fa-cat"></i></h2>
           <hr>
@@ -85,7 +89,10 @@
                         <div class="card-body">
                             <h6><i class="fas fa-toolbox"></i> Toolbox <i class="fas fa-toolbox"></i></h6>
                             <hr>
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
+                            <button type="button" data-toggle="tooltip" data-placement="top" title="Personnalisation de l'interface" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-palette"></i></button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-pen"></i></button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="far fa-window-maximize"></i></button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" style="border-radius: 40%;"><i class="fas fa-cat"></i></button>
                         </div>
                         </div>
                       </div>
@@ -153,7 +160,7 @@
                                 <option value="blue">Blue</option>
                         </select>
                 </div>
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Save changes <i class="far fa-save"></i></button>
+                <button type="submit" class="btn btn-outline-danger">Save changes <i class="far fa-save"></i></button>
               </form>
         </div>
       </div>
