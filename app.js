@@ -6,7 +6,8 @@ var port = process.env.PORT || 3000;
 var ent = require('ent');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-
+//PierreLivio
+var mysql = require('mysql');
 // Encodage des variables inter pages
 app.use(bodyParser.urlencoded({
   extended: true
@@ -38,4 +39,15 @@ io.on('connection', function(socket) {
 // Afffiche le port
 http.listen(port, function() {
   console.log('listening on *:' + port);
+});
+//Connexion à la bdd
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: ""
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
 });
