@@ -42,7 +42,6 @@
               <input type="text" class="form-control" name="postalcode" aria-describedby="CodePostal" placeholder="Enter Code Postal">
 
             </div>
-
             <button type="submit" onclick="entrerChat();" class="btn btn-primary">Entrer sur le chat </button>
           </form>
         </div>
@@ -51,7 +50,17 @@
        //Reset
       function entrerChat(){
         var pseudo = $("#pseudo").val();
-        sessionStorage.setItem("pseudo",pseudo);
+        sessionStorage.setItem("pseudo",pseudo)
+      }
+      if(typeof(markers) !== 'undefined' && markers.length !=0){
+        markers.clearLayers();
+      }
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
+          $("#pseudo").val("Latitude : " + position.coords.latitude + " / Longitude : " + position.coords.longitude);
+        });
       }
        </script>
   </body>
