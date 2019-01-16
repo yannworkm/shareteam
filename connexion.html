@@ -42,7 +42,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputCodePostal">Code Postal</label>
-            <input type="text" class="form-control" name="postalcode" aria-describedby="CodePostal" placeholder="Enter Code Postal">
+            <input type="text" class="form-control" name="postalcode" id="postalcode" aria-describedby="CodePostal" placeholder="Enter Code Postal">
 
           </div>
           <button type="submit" onclick="entrerChat();" class="btn btn-primary">Entrer sur le chat </button>
@@ -51,60 +51,37 @@
     </div>
   </center>
   <script type="text/javascript">
-    //Reset
-    function entrerChat() {
-      var pseudo = $("#pseudo").val();
-      sessionStorage.setItem("pseudo", pseudo)
-    };
-    if (typeof(markers) !== 'undefined' && markers.length != 0) {
-      markers.clearLayers();
-    }
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        $("#pseudo").val("Latitude : " + position.coords.latitude + " / Longitude : " + position.coords.longitude);
-      });
-    }
+
+    //Valider le formulaire de Connexion
+   function entrerChat(){
+     var pseudo = $("#pseudo").val();
+     sessionStorage.setItem("pseudo",pseudo)
+   }
+
+   // Récupération de la latitude et longitude du user
+   if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function(position) {
+       latitude = position.coords.latitude;
+       longitude = position.coords.longitude;
+       getCodePostale(latitude,longitude);
+     });
+   }
+
+   //Récupération code postale
+   function getCodePostale(latitude,longitude) {
+     var baseURL = 'https://geo.api.gouv.fr/communes?lat='+latitude+'&lon='+longitude+'&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre';
+     return $.ajax({
+       url: baseURL,
+       type: 'GET',
+       dataType: 'json',
+       success: function(data) {
+         $("#postalcode").val(data[0].code);
+       },
+       error: function(data) {
+         console.log("Erreur " + data.code);
+       }
+     });
+   }
   </script>
 </body>
-
-            </div>
-            <button type="submit" onclick="entrerChat();" class="btn btn-primary">Entrer sur le chat </button>
-          </form>
-        </div>
-       </div></center>
-       <script type="text/javascript">
-       //Reset
-      function entrerChat(){
-        var pseudo = $("#pseudo").val();
-        sessionStorage.setItem("pseudo",pseudo)
-      }
-      if(typeof(markers) !== 'undefined' && markers.length !=0){
-        markers.clearLayers();
-      }
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          latitude = position.coords.latitude;
-          longitude = position.coords.longitude;
-        });
-      }
-
-      function getCodePostale() {
-        var baseURL = 'https://geo.api.gouv.fr/communes?lat=45.4471431&lon=4.385250699999999&fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=json&geometry=centre';
-        return $.ajax({
-          url: baseURL,
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) {
-            $("#pseudo").val(data[0].code);
-          },
-          error: function(data) {
-            console.log("Erreur " + data.code);
-          }
-        });
-      }
-      getCodePostale();
-       </script>
-  </body>
 </html>
