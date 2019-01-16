@@ -71,6 +71,18 @@
   $(function() {
     $('#toggle-one').bootstrapToggle();
   })
+  //AJout du Shake (livio)
+  function shake(n){
+    n=20;
+    scrollTimer="0";
+      if(parent.moveBy){
+        for(i=5;i>0;i--){
+          for(j=n;j>0;j--){
+            parent.moveBy(0,i);
+            parent.moveBy(i,0);
+            parent.moveBy(0,-i);
+            parent.moveBy(-i,0);
+          }}}
   </script>
 </head>
 
@@ -87,7 +99,7 @@
               <div class="card card-body">
                   <audio controls>
                       <source src="./ah.mp3" type="audio/mpeg">
-                  </audio>      
+                  </audio>
               </div>
           </div>
       <hr>
