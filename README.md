@@ -46,9 +46,9 @@ Définition de la table: Message / pseudo / date / heure (timestmap)
 
 Condition: les messages des 30 derniers jour sont sauvegardés.
 
+# Player de audio
 
-
-
+Possibité de lire une musique pendant durant la navigation sur le chat
 
 # Documentation Back
 
