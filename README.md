@@ -18,7 +18,7 @@ Utilisation de CDN bootstrap 4 / Jquery
 
 Technologie utilisé: Javascript / bootstrap4 / Jquery / HTML5 / CSS3
 
-<ul>Interface page de connexion: 
+<ul>Interface page de connexion:
 <li>- Formulaire où l'utilisateur doit rentrer ses coordonnées </li>
 <li>- Le formulaire obligatoire être rempli pour accéder au chat</li></ul>
 
@@ -28,7 +28,7 @@ Technologie utilisé: Javascript / bootstrap4 / Jquery / HTML5 / CSS3
         <li>- Footer = membres de la team</li></ul>
     <li>- Champ de visualisation de message
     <li>- Toolbox toggle => modal personnalisation (changement de couleur du théme)
-    <li>- Champ input envoie de message / envoie de fichier 
+    <li>- Champ input envoie de message / envoie de fichier
     <li>- Script jquery permettant d'envoyer des messages sur le chat et de les réceptionnés</ul>
 
 <ul><p>Fonction JS:</p>
@@ -37,6 +37,14 @@ Technologie utilisé: Javascript / bootstrap4 / Jquery / HTML5 / CSS3
     <li><ul><p>- Handler:</p>
         <li>- keypress sur bouton entrée: valide form message</li>
         <li>- Submit du formulaire</li></ul>
+
+# Documentation Geolocalisation
+
+  Utilisation de l'API Géo d'api.gouv (https://geo.api.gouv.fr )
+
+  Technologie utilisé: Ajax
+
+  Récupération de la latitude et la longitude de l'utilisateur pour récupérer son code postal ou celui d'un département très proche.
 
 # Base de données
 
