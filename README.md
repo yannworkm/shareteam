@@ -28,7 +28,8 @@ Technologie utilisé: Javascript / bootstrap4 / Jquery / HTML5 / CSS3
         <li>- Footer = membres de la team</li></ul>
     <li>- Champ de visualisation de message
     <li>- Toolbox toggle => modal personnalisation (changement de couleur du théme)
-    <li>- Champ input envoie de message / envoie de fichier </uk>
+    <li>- Champ input envoie de message / envoie de fichier 
+    <li>- Script jquery permettant d'envoyer des messages sur le chat et de les réceptionnés</ul>
 
 <ul><p>Fonction JS:</p>
     <li>- showbrowseFile() => permet de visualiser le champ d'ajout de fichier</li>
