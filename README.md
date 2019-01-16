@@ -18,7 +18,9 @@ Utilisation de CDN bootstrap 4 / Jquery
 
 Technologie utilisé: Javascript / bootstrap4 / Jquery / HTML5 / CSS3
 
-Interface page de connexion => formulaire de connexion
+<ul>Interface page de connexion: 
+<li>- Formulaire où l'utilisateur doit rentrer ses coordonnées </li>
+<li>- Le formulaire obligatoire être rempli pour accéder au chat</li></ul>
 
 <ul><p>Interface page de discussion:</p>
     <li><ul><p>- Tooltip de description:</p>
