@@ -9,7 +9,7 @@ var jsonParser = bodyParser.json();
 
 // Encodage des variables inter pages
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 app.use(bodyParser.json());
 
@@ -23,19 +23,19 @@ app.get('/', function(req, res) {
 
 // route chat
 app.post('/chat', function(req, res) {
-    //var username = req.body.pseudo;
-    //console.log(username);
-    res.sendFile(__dirname + '/index.html');
+  //var username = req.body.pseudo;
+  //console.log(username);
+  res.sendFile(__dirname + '/index.html');
 });
 
 // socket permettant d'afficher le chat
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
+io.on('connection', function(socket) {
+  socket.on('chat message', function(msg) {
     io.emit('chat message', msg);
   });
 });
 // Afffiche le port
-http.listen(port, function(){
+http.listen(port, function() {
   console.log('listening on *:' + port);
 });
