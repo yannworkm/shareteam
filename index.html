@@ -25,13 +25,12 @@
 
     $(function() {
       var socket = io();
-      var pseudo = sessionStorage.getItem('pseudo')
+      var pseudo = sessionStorage.getItem('pseudo');
 
       // submit du formulaire
       $('form').submit(function(e) {
         e.preventDefault();
         socket.emit('chat message', pseudo+" > "+$('#m').val());
-        $('#m').val('');
         return false;
       });
       socket.on('chat message', function(msg) {
@@ -42,6 +41,7 @@
     // Handler sur la touche entrée pour valider le formulaire
     $(document).keypress(function(e) {
       var socket = io();
+      var pseudo = sessionStorage.getItem('pseudo');
       if(e.which == 13) {
           socket.emit('chat message', pseudo+" > "+$('#m').val());
           $('#m').val('');
