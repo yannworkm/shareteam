@@ -40,14 +40,3 @@ io.on('connection', function(socket) {
 http.listen(port, function() {
   console.log('listening on *:' + port);
 });
-//Connexion à la bdd
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: ""
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
